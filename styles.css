@@ -18,3 +18,13 @@ body {
     font-weight: 900;
     margin: 50px;
 }
+
+.grid {
+    display: grid;
+}
+
+.cell {
+    background-color: white;
+}
+
+

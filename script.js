@@ -1,5 +1,18 @@
 slider = document.querySelector('.slider') 
 grid = document.querySelector('.grid')
+colorSlider = document.querySelector('input[type="color"]')
+currentColor = '#000000'
+gridNum = document.querySelector('.grid-number')
+
+for (i=0;i<8*8;i++){
+    cell = document.createElement('div')
+    cell.className = "cell"
+    grid.appendChild(cell)
+    cell.style.width = '50px'
+    cell.style.height = '50px'
+}
+
+grid.style.gridTemplateColumns = 'repeat(8,1fr)'
 
 slider.addEventListener('change', () => {
     slider_values = [8,16,32,64,128]
@@ -20,8 +33,17 @@ slider.addEventListener('change', () => {
 
     cells.forEach(cell => {
     cell.addEventListener('mouseover', () => {
-        cell.style.backgroundColor = 'black'
+        cell.style.backgroundColor = currentColor
     })
 });
 })
 
+colorSlider.addEventListener('change', () => {
+    currentColor = colorSlider.value
+})
+
+slider.addEventListener('change', () => {
+    slider_values = [8,16,32,64,128]
+    currentGrid=slider.value
+    gridNum.innerText = `${slider_values[currentGrid]}x${slider_values[currentGrid]}`
+})
